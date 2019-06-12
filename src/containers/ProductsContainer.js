@@ -2,19 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addToCart } from "../actions";
+import CardDeck from "react-bootstrap/CardDeck";
 import { getVisibleProducts } from "../reducers/products";
 import ProductItem from "../components/ProductItem";
 import ProductsList from "../components/ProductsList";
 
 const ProductsContainer = ({ products, addToCart }) => (
   <ProductsList itemName="Products">
-    {products.map(product => (
-      <ProductItem
-        key={product.itemName}
-        product={product}
-        onAddToCartClicked={() => addToCart(product.itemName)}
-      />
-    ))}
+    <CardDeck>
+      {products.map(product => (
+        <ProductItem
+          key={product.itemName}
+          product={product}
+          onAddToCartClicked={() => addToCart(product.itemName)}
+        />
+      ))}
+    </CardDeck>
   </ProductsList>
 );
 

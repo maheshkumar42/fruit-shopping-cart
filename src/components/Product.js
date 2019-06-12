@@ -1,15 +1,33 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import PropTypes from "prop-types";
 
-const Product = ({ price, imgSrc, quantity, itemName }) => (
-  <div>
-    <img src={imgSrc} alt={itemName} width="50" height="50" />
-    <br />
-    {itemName}
-    <br />
-    <b>&#36;{price}</b>
-    {quantity ? `  ${quantity} in stock` : null}
-  </div>
+const Product = ({
+  price,
+  imgSrc,
+  quantity,
+  itemName,
+  handleAddToCartClicked
+}) => (
+  <Card style={{ width: "12.5rem" }} border="success">
+    <Card.Img variant="top" src={imgSrc} alt={itemName} height="150rem" />
+    <Card.Body>
+      <Card.Title>{itemName}</Card.Title>
+      <Card.Text>
+        <b style={{ fontSize: "24px" }}>&#36;{price}</b>
+        {quantity ? `  ${quantity} in stock` : null}
+      </Card.Text>
+      <Button
+        variant="success"
+        onClick={handleAddToCartClicked}
+        disabled={quantity > 0 ? "" : "disabled"}
+        block
+      >
+        {quantity > 0 ? "Add to cart" : "Sold Out"}
+      </Button>
+    </Card.Body>
+  </Card>
 );
 
 Product.propTypes = {

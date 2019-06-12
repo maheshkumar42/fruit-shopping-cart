@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Product from "./Product";
+import CartItems from "./CartItems";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Cart = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0;
   const nodes = hasProducts ? (
     products.map(product => (
-      <Product
+      <CartItems
         itemName={product.itemName}
         price={product.price}
         imgSrc={product.imgSrc}
@@ -19,15 +22,26 @@ const Cart = ({ products, total, onCheckoutClicked }) => {
   );
 
   return (
-    <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
+    <div style={{ color: "white" }}>
+      <h3>Shopping Cart</h3>
+      <Container>{nodes}</Container>
+      <hr
+        style={{
+          width: "100%",
+          color: "#white",
+          height: "2px",
+          backgroundColor: "#white",
+          margin: "0px",
+          padding: "0px"
+        }}
+      />
       <p>Total: &#36;{total}</p>
+
       <button
         onClick={onCheckoutClicked}
         disabled={hasProducts ? "" : "disabled"}
       >
-        Checkout
+        Confirm Purchase
       </button>
     </div>
   );

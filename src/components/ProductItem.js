@@ -9,13 +9,8 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
       price={product.price}
       imgSrc={product.imgSrc}
       quantity={product.quantityRemaining}
+      handleAddToCartClicked={() => onAddToCartClicked(product.itemName)}
     />
-    <button
-      onClick={onAddToCartClicked}
-      disabled={product.quantityRemaining > 0 ? "" : "disabled"}
-    >
-      {product.quantityRemaining > 0 ? "Add to cart" : "Sold Out"}
-    </button>
   </div>
 );
 
