@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import CartItems from "./CartItems";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 const Cart = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0;
